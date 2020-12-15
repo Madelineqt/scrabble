@@ -69,28 +69,28 @@
 
         <!-- THESE ARE WHERE THE EMPTY (TOP TILES)/ BOARD WILL GO
         Tile Bonus Values: [0, 0, DL, 0, 0, DW, 0, 0]--->
-        <div class = "fluid-container">
-            <div class = "boardSpaceDefault"></div>
-            <div class = "boardSpaceDefault"></div>
-            <div class = "boardSpaceDL"></div>
-            <div class = "boardSpaceDefault"></div>
-            <div class = "boardSpaceDefault"></div>
-            <div class = "boardSpaceDW"></div>
-            <div class = "boardSpaceDefault"></div>
+        <div class = "fluid-container" id="board" >
+            <div id="board0" class = "boardSpaceDefault" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div>
+            <div id="board1"class = "boardSpaceDefault"  ondragover="onDragOver(event);" ondrop="onDrop(event);"></div>
+            <div id="board2"class = "boardSpaceDL"  ondragover="onDragOver(event);" ondrop="onDrop(event);"></div>
+            <div id="board3"class = "boardSpaceDefault"  ondragover="onDragOver(event);" ondrop="onDrop(event);"></div>
+            <div id="board4"class = "boardSpaceDefault"  ondragover="onDragOver(event);" ondrop="onDrop(event);"></div>
+            <div id="board5"class = "boardSpaceDW"  ondragover="onDragOver(event);" ondrop="onDrop(event);"></div>
+            <div id="board6"class = "boardSpaceDefault"  ondragover="onDragOver(event);" ondrop="onDrop(event);"></div>
         </div>
 
         <br></br>
         <br></br>
 
         <!-- Draggable tiles go here!! -->
-        <div class = "fluid-container">
-            <div class = "letterTile" draggable = "true"></div>
-            <div class = "letterTile" draggable = "true"></div>
-            <div class = "letterTile" draggable = "true"></div>
-            <div class = "letterTile" draggable = "true"></div>
-            <div class = "letterTile" draggable = "true"></div>
-            <div class = "letterTile" draggable = "true"></div>
-            <div class = "letterTile" draggable = "true"></div>
+        <div class = "fluid-container" id="tiles">
+            <div id="tile0" data-letter="" data-index="0" class = "letterTile" draggable = "true" ondragstart="onDragStart(event);" ></div>
+            <div id="tile1" data-letter="" data-index="1"class = "letterTile" draggable = "true" ondragstart="onDragStart(event);"></div>
+            <div id="tile2" data-letter="" data-index="2"class = "letterTile" draggable = "true" ondragstart="onDragStart(event);"></div>
+            <div id="tile3" data-letter="" data-index="3"class = "letterTile" draggable = "true" ondragstart="onDragStart(event);"></div>
+            <div id="tile4" data-letter="" data-index="4"class = "letterTile" draggable = "true" ondragstart="onDragStart(event);"></div>
+            <div id="tile5" data-letter="" data-index="5"class = "letterTile" draggable = "true" ondragstart="onDragStart(event);"></div>
+            <div id="tile6" data-letter="" data-index="6"class = "letterTile" draggable = "true" ondragstart="onDragStart(event);"></div>
         </div>
 
         <br> <br>

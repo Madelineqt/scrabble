@@ -34,6 +34,8 @@
  *  updated by JMH on November 25, 2015 at 10:58 AM to add the blank tile
  *  updated by JMH on November 27, 2015 at 10:22 AM to add original-distribution
  */
+let currentdragcharacter
+const alphabet = "abcdefghijklmnopqrstuvwxyz_"
 let ScrabbleTiles = [] ;
 ScrabbleTiles["A"] = { "value" : 1,  "original-distribution" : 9,  "number-remaining" : 9  } ;
 ScrabbleTiles["B"] = { "value" : 3,  "original-distribution" : 2,  "number-remaining" : 2  } ;
@@ -61,7 +63,7 @@ ScrabbleTiles["W"] = { "value" : 4,  "original-distribution" : 2,  "number-remai
 ScrabbleTiles["X"] = { "value" : 8,  "original-distribution" : 1,  "number-remaining" : 1  } ;
 ScrabbleTiles["Y"] = { "value" : 4,  "original-distribution" : 2,  "number-remaining" : 2  } ;
 ScrabbleTiles["Z"] = { "value" : 10, "original-distribution" : 1,  "number-remaining" : 1  } ;
-// ScrabbleTiles["_"] = { "value" : 0,  "original-distribution" : 2,  "number-remaining" : 2  } ;
+ScrabbleTiles["_"] = { "value" : 0,  "original-distribution" : 2,  "number-remaining" : 2  } ;
 
 // Initialize score variables.
 let currentScore = 0;   // Running total
@@ -88,6 +90,9 @@ let doubleWord = false;
 let turnWord = "";
 let turnWordArray = ["", "", "", "", "", "", ""];
 
+let hand = []
+
+
 start();
 
 // Start function: Should run when page is loaded/reloaded,
@@ -108,7 +113,8 @@ function start(){
 
     // Function to "bounce" tiles (return to hand if not
     // dragged onto a space on the board)
-    bounceTile();
+    //not necessary at start
+    //bounceTile();
 }
 
 // Check for button presses here?
@@ -121,16 +127,21 @@ document.getElementById("btnReset").addEventListener("click", function() {
   // Should also reset playerHandTiles (player's hand)
   // and clear the board. Should run when page is
   // loaded/reloaded and when reset button is pressed.
-  function resetGame() {
-      console.log("RESET FUNCTION CALLED");
-      wordScore = 0;
-      currentScore = 0;
-      turnWord = "";
-      turnWordArray = ["", "", "", "", "", "", ""];
-      tilesLeft = 98;
-      doubleWord = false;
-  }
+  resetGame()
+  
 });
+function resetGame() {
+    console.log("RESET FUNCTION CALLED");
+    wordScore = 0;
+    currentScore = 0;
+    hand = []
+    turnWord = "";
+    turnWordArray = ["", "", "", "", "", "", ""];
+    tilesLeft = 98;
+    doubleWord = false;
+    clearTable()
+    start()
+}
 
 // Check submit button for button press - if pressed, call submit
 document.getElementById("btnSubmit").addEventListener("click", function() {
@@ -164,8 +175,35 @@ document.getElementById("btnSubmit").addEventListener("click", function() {
 // for their number of tiles to equal 7.
 function dealTiles() {
     console.log("DEAL TILES CALLED");
-}
+    let currentletter
+    for (let i= 0; i < 7; i++) {
+        currentletter = alphabet[Math.floor(Math.random() * alphabet.length)].toUpperCase()
+        ScrabbleTiles[currentletter]["number-remaining"]--
+        hand.push(currentletter)   
 
+    }
+    console.log(hand)
+    mapTilesToScreen()
+}
+function clearTable(){
+    let children = [...document.getElementById('board').children]
+    children.forEach((tile, index) => {
+        document.getElementById(tile.id).style.backgroundImage = ``
+    })
+}
+function mapTilesToScreen(){
+    let children = [...document.getElementById('tiles').children]
+    children.forEach((tile, index) => {
+        document.getElementById(tile.id).style.backgroundImage = ``
+    })
+
+    console.log(hand.length)
+    hand.forEach((tile, index) => {
+        document.getElementById(`tile${index}`).dataset.letter = tile
+        document.getElementById(`tile${index}`).style.backgroundImage = `url(graphics_data/tileImages/Scrabble_Tile_${tile}.jpg)`
+    })
+
+}
 // Handling for dropping a tile onto a space.
 // Check to make sure is placed directly next to another tile.
 // Do NOT allow user to move tile once placed.
@@ -190,7 +228,30 @@ function bounceTile() {
     console.log("BOUNCE TILE CALLED");
 }
 
+function onDragStart(event) {
+    event
+      .dataTransfer
+      .setData('text/plain', event.target.id);
+    currentdragcharacter = event.target.dataset.letter
+    console.log(currentdragcharacter)
+    console.log("drag start")
+  }
+  function onDragOver(event) {
+    event.preventDefault();
+  }
+  function onDrop(event) {
+    const id = event.dataTransfer.getData('text');
+    const draggableElement = document.getElementById(id);
+    const dropzone = event.target;
+    dropzone.style.backgroundImage = draggableElement.style.backgroundImage
+    hand.splice(draggableElement.dataset.index, 1)
+    mapTilesToScreen()
+   
+   
 
+
+
+  }
 // Calculate cumulative score - add value of word
 // score to "currentScore" variable.
 function findTotalScore() {

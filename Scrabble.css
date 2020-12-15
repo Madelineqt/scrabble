@@ -49,7 +49,6 @@ body {
 .letterTile {
     /* place holder image - change me later! */
     display: inline-block;
-    background-image: url("graphics_data/tileImages/Scrabble_Tile_A.jpg");
     position: relative;
     height: 165px; /* checked image size */
     width: 180px; /* checked image size */
