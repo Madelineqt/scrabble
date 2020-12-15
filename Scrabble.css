@@ -1,0 +1,76 @@
+/* TRY THREE */
+
+body {
+    background-image: linear-gradient(#666666, #009999);
+    color: #cc5eff;
+}
+
+/* Main content goes here (where game will go) */
+
+/* Custom Classes Start Here */
+
+/* image settings for tiles? */
+
+/* NO BONUS:  */
+.boardSpaceDefault {
+    background-image: url("graphics_data/BlankPlace.jpg");
+    display: inline-block;
+    height: 175px;
+    width: 190px;
+    margin: 2px;
+    border: 2px black solid;
+    background-color: grey;
+}
+
+/* DOUBLE LETTER: Third tile [2] */
+.boardSpaceDL {
+    background-image: url("graphics_data/DLPlace.jpg");
+    display: inline-block;
+    height: 175px;
+    width: 190px;
+    margin: 2px;
+    border: 2px black solid;
+    background-color: blue;
+}
+
+/* DOUBLE WORD: Sixth tile [5] */
+.boardSpaceDW {
+    background-image: url("graphics_data/DWPlace.jpg");
+    display: inline-block;
+    height: 175px;
+    width: 190px;
+    margin: 2px;
+    border: 2px black solid;
+    background-color: pink;
+}
+
+
+/* NEEDS TO BE CHOSEN RANDOMLY - A IS A PLACE HOLDER */
+.letterTile {
+    /* place holder image - change me later! */
+    display: inline-block;
+    background-image: url("graphics_data/tileImages/Scrabble_Tile_A.jpg");
+    position: relative;
+    height: 165px; /* checked image size */
+    width: 180px; /* checked image size */
+    top: 2px;
+    left: 2px;
+    cursor: pointer;
+}
+
+
+
+/* Referenced:
+https://www.youtube.com/watch?v=C22hQKE_32c */
+
+/* WILL USE THESE IN JS */
+.hold {
+    border: solid red 6px;
+}
+.hovered {
+    background: yellow;
+    border-style: dashed;
+}
+.invisible {
+    display: none;
+}

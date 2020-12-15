@@ -1,0 +1,116 @@
+<!-- TRY THREE -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset = "utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Links to Bootstrap's CSS style sheet, taken from the Bootstrap
+        website here: https://getbootstrap.com/docs/4.5/getting-started/introduction/ -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+        <!-- Link to my CSS for this assignment -->
+        <link rel="stylesheet" type = "text/css" href="Scrabble.css">
+
+        <title>
+            Homework 8!
+        </title>
+    </head>
+
+<!-- Remember to re-add nav bar here!! -->
+
+<div class = "jumbotron">
+<div class = "col-lg-12 col-md-12 col-xs-12">
+    <body>
+      <h2>
+          Scrabble!
+      </h2>
+      <h3>
+          Instructions:
+      </h3>
+      <ul>
+          <h4>
+          <li> Drag and drop a tile to a square. </li>
+          <li> Try to form a word with the letters. </li>
+          <li> Press "SUBMIT" button to submit your word. </li>
+          <li> Press "RESET" button to restart at any time. </li>
+          </h4>
+      </ul>
+      <h3>
+          Rules:
+      </h3>
+      <ul>
+            <h4>
+            <li> You cannot remove a tile once it has been placed. </li>
+            <li> Tiles muct be placed adjacently (no spaces). </li>
+            </h4>
+        </ul>
+
+        <h5> Note: Scores will display as "NULL" until player has
+        taken at least one turn since starting the game. </h5>
+
+        <!-- Displays scores- pulls from js
+        Change to custom CSS class scoreContainer if
+        have time to create it. -->
+        <div class = "fluid-container">
+            <h5> The value of the word on the board now is </h5>
+            <h5 id = turnWord>NULL</h5>
+            <h5> The value of your current score is </h5>
+            <h5 id = currentScore>NULL</h5>
+            <h5> The number of tiles remaining is </h5>
+            <h5 id = tilesLeft>NULL</h5>
+        </div>
+
+        <h5> PUT A RESET BUTTON HERE (and center it) </h5>
+        <button type = "button" id="btnReset">Reset</button>
+
+        <!-- THESE ARE WHERE THE EMPTY (TOP TILES)/ BOARD WILL GO
+        Tile Bonus Values: [0, 0, DL, 0, 0, DW, 0, 0]--->
+        <div class = "fluid-container">
+            <div class = "boardSpaceDefault"></div>
+            <div class = "boardSpaceDefault"></div>
+            <div class = "boardSpaceDL"></div>
+            <div class = "boardSpaceDefault"></div>
+            <div class = "boardSpaceDefault"></div>
+            <div class = "boardSpaceDW"></div>
+            <div class = "boardSpaceDefault"></div>
+        </div>
+
+        <br></br>
+        <br></br>
+
+        <!-- Draggable tiles go here!! -->
+        <div class = "fluid-container">
+            <div class = "letterTile" draggable = "true"></div>
+            <div class = "letterTile" draggable = "true"></div>
+            <div class = "letterTile" draggable = "true"></div>
+            <div class = "letterTile" draggable = "true"></div>
+            <div class = "letterTile" draggable = "true"></div>
+            <div class = "letterTile" draggable = "true"></div>
+            <div class = "letterTile" draggable = "true"></div>
+        </div>
+
+        <br> <br>
+
+        <div class = "container">
+            <h3> SUBMIT BUTTON HERE </h3>
+            <button type = "button" id="btnSubmit">Submit</button>
+        </div>
+
+        <!-- jQuery and Bootstrap Bundle (includes Popper) from Bootstrap website.
+        https://getbootstrap.com/docs/4.5/getting-started/introduction/, under
+        "Option 1". This is necessary because many parts of Bootstrap will not
+        work without Javascript. This uses the jsdelivr CDN. -->
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+        <!-- JS- Goes at end of body. -->
+        <script src="Scrabble.js"></script>
+    </body>
+</div>
+</div>
+</html>
